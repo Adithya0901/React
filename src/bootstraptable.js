@@ -2,6 +2,8 @@ import DataTable from 'react-data-table-component';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import {EditTransaction} from './newwebform'
+
 
 import React, {
   useState,
@@ -12,8 +14,8 @@ import React, {
 import axios from "axios";
 
 
-
 const Daerds = () => {
+  
   const [data, setData] = useState([]);
 
   const  deleteTransaction=(empno)=>{
@@ -55,16 +57,8 @@ headers:{
 
   };
 
-
   
-  
-  const EditTransaction=(rowid)=>{
-  
-  
-  
-  }
-
-  useEffect(() => {
+useEffect(() => {
     axios
       .get(
         "https://localhost:7199/api/employees/GetEmployeeList"
@@ -118,7 +112,7 @@ headers:{
         <IconButton
           aria-label="delete"
           color="primary"
-          onClick={() => EditTransaction(row.empno)}
+          onClick={()=>EditTransaction(row.empno)}
         >  
           <EditIcon />
         </IconButton>
@@ -145,6 +139,8 @@ headers:{
   
   );
 }
+
+
 
 
 export default Daerds;

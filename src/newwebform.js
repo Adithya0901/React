@@ -7,10 +7,59 @@ import Daerds from './bootstraptable';
 
 import axios  from 'axios';
 
-const saveclik=()=>{
+let edit =0;
+
+let edata
+ const EditTransaction =(empno)=>  {
+ //const [frmdata,SetfrmData]=useState([]);
+  const  rowid= {empno:empno}
+    
+
+  try {
+      
+    const response =  axios.post('https://localhost:7199/api/employees/GetEmployeeDetails', rowid,{
+headers:{
+
+'Content-Type': 'application/json;charset=UTF-8',
+
+  }
+}
+
+    ).then(response=>{editdata(response.data)})
+   console.log(edata)
+   
+    
+    // TextControlsExample(response.data);
+    return("s")
+    
+    } catch (error) {
+    
+    console.error('Error deleting form data:', error);
+    
+    }
+
+  
+} 
+
+function editdata(emedetails){
+//   let eleempno=document.getElementById("empno")
+//   eleempno.value=emedetails.empno
+//  let elename= document.getElementById("empname")
+//  elename.value=emedetails.empname
+
+//  let eleaddress= document.getElementById("empaddress")
+//  eleaddress.value=emedetails.empaddress
+
+ 
+//  let elemail= document.getElementById("empmail")
+//  elemail.value=emedetails.empmail
+
+//   let hdnelemno= document.getElementById("hdnedit")
+//   hdnelemno.value=1
 
 
 }
+
 
 let axiosConfig = {
   headers: {
@@ -18,14 +67,16 @@ let axiosConfig = {
       "Access-Control-Allow-Origin": "*",
   }
 };
-function TextControlsExample() {
-  const [formData, setFormData] = useState({
+ const TextControlsExample=(empetails)=> {
+ 
+    const [formData, setFormData] = useState({
 
     empname: '',
     
     empmail: '',
     empaddress:'',
-    empno:''
+    empno:'',
+    empedit:0
     
     
     });
@@ -102,13 +153,15 @@ function TextControlsExample() {
        
       }
 
+    
+
     return (
       <form>
         <div>
           <div className='App-Header' >
            <div class="row">
             <div class="col-sm2">
-
+              <input name="hdnedit" value={formData.empedit} type="hidden" id="hdnedit" />
               <label className="form-label" > Employee Name</label>
             </div>
           <div class="col-sm2">
@@ -169,4 +222,5 @@ function TextControlsExample() {
     );
   }
 
-  export default TextControlsExample;
+  export default  TextControlsExample
+  export {EditTransaction}
