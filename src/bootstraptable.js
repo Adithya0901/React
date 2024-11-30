@@ -2,7 +2,9 @@ import DataTable from 'react-data-table-component';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {EditTransaction} from './newwebform'
+
+import { Link } from "react-router-dom";
+
 
 
 import React, {
@@ -13,7 +15,7 @@ import React, {
 
 import axios from "axios";
 
-
+let ex=0;
 const Daerds = () => {
   
   const [data, setData] = useState([]);
@@ -109,13 +111,15 @@ useEffect(() => {
     },
     {
       cell: row => (
-        <IconButton
-          aria-label="delete"
+       
+       <Link to={'/edit/'+row.empno+'/'+ex} params={{empno:row.empno,counts:++ex}}><IconButton
+          aria-label=""Edit
           color="primary"
-          onClick={()=>EditTransaction(row.empno)}
+          
         >  
           <EditIcon />
         </IconButton>
+        </Link>
       )
     }
     ];

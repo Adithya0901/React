@@ -1,7 +1,7 @@
 @import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 .App {
-  text-align: center;
+  text-align:left ;
 }
 
 .App-logo {
@@ -18,7 +18,6 @@
 .App-header {
   background-color: #eef5e417;
   min-height: 100vh;
-  
   display: flex;
   flex-wrap: wrap;
   align-items: left;
@@ -51,4 +50,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.reck ul, .reck li{
+   margin:0;
+   padding:0;
 }
